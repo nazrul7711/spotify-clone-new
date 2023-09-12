@@ -1,0 +1,161 @@
+@import "variables";
+.wrapper {
+  width: 100vw;
+  height: 150vh;
+  background-color: $pure-white;
+  color: $black-color;
+  .container {
+    width: 35%;
+    margin: 0 auto;
+    padding-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .link{
+      margin-top:1.2rem ;
+    }
+    .button{
+        width: 100%;
+        display: grid;
+        place-items: center;
+      }
+    
+    .google {
+      min-width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      div:nth-child(2) {
+        font-size: 1.5rem;
+        font-weight: bolder;
+        margin: 1rem;
+      }
+      p {
+        color: $lightest-grey-color;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 45%;
+          left: 9%;
+          height: 1px;
+          width: 9rem;
+          background-color: $lightest-grey-color;
+          z-index: 2;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 45%;
+          right: 9%;
+          height: 1px;
+          width: 9rem;
+          background-color: $lightest-grey-color;
+          z-index: 2;
+        }
+      }
+
+      button:first-of-type {
+        background-color: $navy-blue-color;
+        color: $pure-white;
+      }
+      button:last-of-type {
+        border: 1.2px solid $black-color;
+      }
+      & button {
+        cursor: pointer;
+        width: 22rem;
+        padding: 1rem;
+        border-radius: 1.5rem;
+        border: none;
+        outline: none;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & span {
+          padding-left: 0.8rem;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+      }
+      .spotifylogo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 6rem;
+        div:first-of-type {
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+      }
+    }
+    .dob {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      input:first-of-type,
+      input:last-of-type,
+      
+      select {
+        border: 1px solid $black-color;
+        border-radius: 0.2rem;
+        &::placeholder {
+          font-size: 0.9rem;
+        }
+        margin-top: 0.5rem;
+      }
+      input:first-of-type {
+        width: 7rem;
+        padding: 1rem;
+      }
+      input:last-of-type {
+        width: 5rem;
+      }
+      select {
+        width: 12rem;
+        padding: 1rem 1.2rem;
+      }
+    }
+    .general {
+      min-width: 100%;
+      margin-top: 1rem;        
+      .title {
+        font-weight: bolder;
+      }
+      .email{
+        margin-bottom: 1.4rem;
+      }
+      .email  input {
+        width: 100%;
+        padding: 0.8rem;
+        border-radius: 0.2rem;
+        border: 1px solid $light-grey;
+        margin-top: 1rem;
+        &::placeholder {
+          font-size: 1rem;
+        }
+      }
+    }
+    .gender {
+      margin-bottom: 1rem;
+      label:nth-child(2),
+      label:nth-child(3),
+      label:nth-child(4) {
+        margin-left: 1rem;
+      }
+      input[type="radio"]{
+        margin-right: .5rem;
+      } 
+      
+    }
+  }
+  .error{
+    color: $red-color;
+  }
+}
