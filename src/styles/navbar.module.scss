@@ -1,0 +1,71 @@
+@import "variables";
+// @import '@radix-ui/colors/black-alpha.css';
+// @import '@radix-ui/colors/mauve.css';
+// @import '@radix-ui/colors/violet.css';
+.wrapper {
+  background-color: $light-grey;
+  color: $white-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.2rem;
+  .arrows {
+    display: flex;
+  }
+  .buttons {
+    display: flex;
+    color: $white-color;
+    font-size: 1.1rem;
+  }
+  a:last-of-type {
+    background-color: $white-color;
+    color: $light-grey;
+    margin-left: 1rem;
+    padding: 1rem 1.3rem;
+    border-radius: 2rem;
+  }
+  button {
+    padding: 1rem 1.3rem;
+    border-radius: 2rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+  }
+
+  .loginButtons {
+    position: relative;
+    * {
+      cursor: pointer;
+    }
+    .options {
+      position: absolute;
+      min-height: 10rem;
+      min-width: 8rem;
+      top:110% ;
+      right:-1%;
+      background-color: $light-grey;
+      color: $white-color;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    a:first-of-type {
+      background-color: $white-color;
+      color: $light-grey;
+      margin-left: 1rem;
+      padding: 0.5rem 1.3rem;
+      border-radius: 2rem;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  button {
+    all: unset;
+  }
+}
+.span {
+  background: linear-gradient(to bottom, rgb(0, 255, 157, 0.5), transparent);
+}

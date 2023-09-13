@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import React from "react";
 import styles from "@/styles/signUp.module.scss";
 import { FaSpotify } from "react-icons/fa";
 import { BsFacebook } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
-import { useForm} from "react-hook-form";
-
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 type InputType = {
   name: string;
@@ -35,11 +35,12 @@ const page = () => {
     // console.log(res);
   }
   const currentYear = new Date().getFullYear();
+  const router = useRouter();
   return (
     <div className={styles.wrapper}>
       <form className={styles.container} onSubmit={handleSubmit(signupHandler)}>
         <div className={styles.google}>
-          <div className={styles.spotifylogo}>
+          <div className={styles.spotifylogo} onClick={() => router.push("/")}>
             <FaSpotify size={40} />
             <div>Spotify</div>
           </div>
@@ -216,9 +217,7 @@ const page = () => {
               <p className={styles.error}>{errors.gender.message}</p>
             )}
           </div>
-          <div className={styles.button}>
-           
-          </div>
+          <div className={styles.button}></div>
         </div>
         <p className={styles.link}>
           Have an account? <Link href="/auth/signIn">Log In</Link>

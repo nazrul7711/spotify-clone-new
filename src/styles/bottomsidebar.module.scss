@@ -1,0 +1,42 @@
+@import "variables";
+.wrapper {
+  background-color: $light-grey;
+
+  .first {
+    background-color: $light-grey;
+    color: $white-color;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem;
+    .library {
+      display: flex;
+    }
+    p {
+      margin-left: 3px;
+    }
+    .plus {
+      cursor: pointer;
+    }
+  }
+  .likedSongs {
+    display: flex;
+    color: $white-color;
+    .heart {
+      height: 3rem;
+      width: 3rem;
+      background: linear-gradient(-45deg, white 10%, green);
+      display: grid;
+      place-items: center;
+      
+    }
+   .liked{
+      margin-left: 10px;
+      display: flex;
+      flex-direction: column;      
+    }
+    .song{
+      display: flex;
+      gap: 5px;
+    }
+  }
+}

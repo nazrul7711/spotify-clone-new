@@ -1,0 +1,23 @@
+@import "variables";
+.wrapper {
+  background-color: $light-grey;
+  color: $white-color;
+  .item {
+    display: flex;
+    gap: 1rem;
+    padding-left:.4rem ;
+    margin-top:1rem ;
+    cursor: pointer;
+  }
+  .text{
+    font-weight: 300;
+    padding-bottom:.4rem ;
+  }
+  .current{
+    .text{
+      font-weight: 600;
+    }
+
+  }
+}
+

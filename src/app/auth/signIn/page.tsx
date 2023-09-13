@@ -34,8 +34,8 @@ const Page = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.logoParent}>
-        <div className={styles.logo}>
-          <FaSpotify size={30} onClick={logoHandler} />
+        <div className={styles.logo} onClick={logoHandler}>
+          <FaSpotify size={30} />
           <div>Spotify</div>
         </div>
       </div>
