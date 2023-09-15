@@ -4,11 +4,15 @@ import styles from "@/styles/navbar.module.scss";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import Link from "next/link";
 import { BsPersonCircle } from "react-icons/bs";
+import { usePathname } from "next/navigation";
+import SearchInput from "./SearchInput";
 
 const Navbar = () => {
   let sth = true;
   let login = true;
   const [toggle,setToggle] = useState<boolean>(false)
+  let path = usePathname();
+
   return (
     <div className={`${styles.wrapper} ${login ? styles.span : ""}`}>
       <div className={styles.arrows}>
@@ -18,6 +22,7 @@ const Navbar = () => {
         <div>
           <AiOutlineRight size={20} />
         </div>
+        {path==="/search" && <SearchInput/>}
       </div>
       <div className={styles.buttons}>
         {login ? (

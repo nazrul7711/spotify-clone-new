@@ -1,0 +1,13 @@
+@import "variables";
+
+.wrapper{
+  input{
+    outline: none;
+    width: 20rem;
+    padding: 1rem;
+    border: 2px solid $lightest-grey-color;
+    border-radius: 2rem;
+    background-color: transparent;
+    color: $white-color;
+  }
+}

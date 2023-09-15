@@ -1,0 +1,16 @@
+@import "variables";
+.wrapper {
+  height: 12rem;
+  width: 12rem;
+  color: $pure-white;
+  overflow: hidden;
+  .text {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 1rem;
+  }
+  .img {
+    transform: translateY(30%) translateX(80%) rotate(-45deg);
+    transform-origin: center;
+  }
+}

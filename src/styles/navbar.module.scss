@@ -11,9 +11,11 @@
   padding: 0 1.2rem;
   .arrows {
     display: flex;
+    align-items: center;
+    gap:1rem;
   }
   .buttons {
-    display: flex;
+    display: flex;    
     color: $white-color;
     font-size: 1.1rem;
   }

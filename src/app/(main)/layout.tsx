@@ -18,7 +18,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Navbar />
       <BottomSidebar />
       {children}
-      <AudioPlayer/>
+      {/* <AudioPlayer/> */}
       {/* {isModal && <Modal/>} */}
       {/* {someSong && (
         <AudioPlayer/>

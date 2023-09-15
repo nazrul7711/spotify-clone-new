@@ -30,7 +30,7 @@ const AudioPlayer = () => {
   };
 
   function whilePlaying() {
-    progressRef.current!.value = audioRef.current?.currentTime!.toString();
+    progressRef.current!.value = (audioRef.current?.currentTime!).toString();
     progressRef.current?.style.setProperty(
       "--progress-width",
       `${(parseInt(progressRef.current?.value) / duration) * 100}%`
@@ -138,7 +138,7 @@ const AudioPlayer = () => {
             <audio src={"/randomsong.mp3"} preload="metadata" ref={audioRef} />
           </div>
           <div className={styles.progress}>
-            <div style={{ color: "white" }}>{calculateTime(currentTime)}</div>
+            <div className={styles.timePiece}>{calculateTime(currentTime)}</div>
             <input
               type="range"
               ref={progressRef}
@@ -146,7 +146,10 @@ const AudioPlayer = () => {
               onChange={changeRange}
               defaultValue="0"
             />
-            <div style={{ color: "white" }}>
+            <div
+            
+              className={styles.timePiece}
+            >
               {duration && !isNaN(duration) && calculateTime(duration)}
             </div>
           </div>
