@@ -1,0 +1,22 @@
+@import "variables";
+.wrapper {
+  position: absolute;
+  .backdrop {
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: rgba(25, 25, 25, 0.8);
+  }
+  .modal {
+    width: 60vw;
+    height: 20vh;
+    background-color: rgb(255, 255, 255);
+    z-index: 5;
+    top: -30%;
+    left: 20%;
+    display: flex;
+    .item {
+      flex: 1;
+    }
+  }
+}
