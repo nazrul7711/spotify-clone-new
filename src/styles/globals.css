@@ -25,3 +25,6 @@ a {
   outline: none;
   cursor: pointer;
 }
+li{
+  list-style: none;
+}

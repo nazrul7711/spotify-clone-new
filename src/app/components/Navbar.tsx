@@ -7,14 +7,22 @@ import { BsPersonCircle } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import SearchInput from "./SearchInput";
 
-const Navbar = () => {
+type NavbarProps = {
+  className:string
+}
+
+const Navbar = ({className}:NavbarProps) => {
   let sth = true;
   let login = true;
-  const [toggle,setToggle] = useState<boolean>(false)
+  const [toggle, setToggle] = useState<boolean>(false);
   let path = usePathname();
 
   return (
-    <div className={`${styles.wrapper} ${login ? styles.span : ""}`}>
+    <div
+      className={`${styles.wrapper} ${className} ${
+        login ? styles.span : ""
+      }`}
+    >
       <div className={styles.arrows}>
         <div>
           <AiOutlineLeft size={20} />
@@ -22,23 +30,28 @@ const Navbar = () => {
         <div>
           <AiOutlineRight size={20} />
         </div>
-        {path==="/search" && <SearchInput/>}
+        {path === "/search" && <SearchInput />}
       </div>
       <div className={styles.buttons}>
         {login ? (
           <div className={styles.loginButtons}>
             <Link href="#">Explore Premium</Link>
 
-            <div className={styles.IconButton} onClick={()=>setToggle(p=>!p)}>
+            <div
+              className={styles.IconButton}
+              onClick={() => setToggle((p) => !p)}
+            >
               <BsPersonCircle size={30} />
             </div>
-            {toggle && <div className={styles.options}>
-              <div>Account</div>
-              <div>Profile</div>
-              <div>Upgrade to Premium</div>
-              <div>Settings</div>
-              <button >Logout</button>
-            </div>}
+            {toggle && (
+              <div className={styles.options}>
+                <div>Account</div>
+                <div>Profile</div>
+                <div>Upgrade to Premium</div>
+                <div>Settings</div>
+                <button>Logout</button>
+              </div>
+            )}
           </div>
         ) : sth ? (
           <div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { ReactNode, useState } from "react";
 import Navbar from "../components/Navbar";
 import TopSidebar from "../components/TopSidebar";
@@ -7,23 +7,24 @@ import styles from "@/styles/layout.module.scss";
 import Modal from "../components/Modal";
 import AudioPlayer from "../components/AudioPlayer";
 
-
 const Layout = ({ children }: { children: ReactNode }) => {
   let someSong = true;
-  let isModal = true
-  const [isPlaying,setIsPlaying] = useState<boolean>(false)
+  let isModal = true;
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
   return (
     <div className={styles.wrapper}>
-      <TopSidebar />
-      <Navbar />
-      <BottomSidebar />
+      <div className={styles.sidebar}>
+        <TopSidebar />
+        <BottomSidebar />
+      </div>
+      <Navbar className={styles.navbar} />
+
       {children}
       {/* <AudioPlayer/> */}
-      {/* {isModal && <Modal/>} */}
+      {isModal && <Modal/>}
       {/* {someSong && (
         <AudioPlayer/>
       )} */}
-      
     </div>
   );
 };

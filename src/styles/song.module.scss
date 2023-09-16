@@ -1,0 +1,44 @@
+@import "variables";
+
+.wrapper {
+  color: $pure-white;
+  margin-top: 5rem;
+  margin-left: .5rem;
+  padding: 1rem;
+  height: 30rem;
+  background: linear-gradient(to bottom, rgb(129, 129, 129), $light-grey);
+
+  .song {
+    margin-top: 5rem;
+    display: flex;
+    gap: 1rem;
+    margin-left: 1rem;
+  }
+  .songDetail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: end;
+    & :nth-child(2) {
+      font-size: 5rem;
+      font-weight: bold;
+    }
+  }
+  
+  .imgContainer {
+    position: relative;
+    height: 15rem;
+    aspect-ratio: 1;
+  }
+  .songIcons {
+    margin-top: 1rem;
+    // margin-left: 1rem;
+    padding-left: 1rem;
+    width: 12rem;
+    height: 10rrem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+

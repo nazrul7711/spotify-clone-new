@@ -1,7 +1,7 @@
 @import "variables";
 .wrapper {
   background-color: $light-grey;
-
+  height: 100%;
   .first {
     background-color: $light-grey;
     color: $white-color;
@@ -27,14 +27,13 @@
       background: linear-gradient(-45deg, white 10%, green);
       display: grid;
       place-items: center;
-      
     }
-   .liked{
+    .liked {
       margin-left: 10px;
       display: flex;
-      flex-direction: column;      
+      flex-direction: column;
     }
-    .song{
+    .song {
       display: flex;
       gap: 5px;
     }

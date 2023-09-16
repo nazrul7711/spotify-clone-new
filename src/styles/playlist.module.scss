@@ -1,0 +1,45 @@
+@import "variables";
+.wrapper {
+  height: 15rem;
+  width: 10.5rem;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 1rem;
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+  }
+  .imgContainer {
+    position: relative;
+    aspect-ratio: 1;
+    height: 100%;
+    position: relative;
+  }
+  .title {
+    font-weight: 600;
+  }
+  .desc {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: $lightest-grey-color;
+  }
+  &:hover {
+    background-color: $light-grey;
+  }
+  .play {
+    position: absolute;
+    right: 2%;
+    top: 46%;
+    animation: onHover .2s ease-in;
+  }
+  @keyframes onHover {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+    }
+  }
+}

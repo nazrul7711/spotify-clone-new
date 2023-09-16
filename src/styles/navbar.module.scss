@@ -1,9 +1,9 @@
 @import "variables";
-// @import '@radix-ui/colors/black-alpha.css';
-// @import '@radix-ui/colors/mauve.css';
-// @import '@radix-ui/colors/violet.css';
+
 .wrapper {
   background-color: $light-grey;
+  height: 6rem;
+  width:75.5%;
   color: $white-color;
   display: flex;
   justify-content: space-between;

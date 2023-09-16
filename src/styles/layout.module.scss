@@ -4,13 +4,22 @@
   width: 100vw;
   display: grid;
   grid-template-columns: 20rem 1fr;
-  grid-template-rows: 8rem 1fr;
   background-color: $black-color;
   gap: 8px;
   padding: 0.5rem;
   position: relative;
+  .sidebar{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+  }
+  .navbar{
+    position: fixed;
+    left :24%;
+
+  }
   * {
     border-radius: 5px;
   }
- 
 }
