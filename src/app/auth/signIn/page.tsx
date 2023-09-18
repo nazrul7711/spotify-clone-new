@@ -8,6 +8,7 @@ import { FaApple } from "react-icons/fa";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { signIn, useSession } from "next-auth/react";
 
 
 type InputType = {
@@ -28,9 +29,18 @@ const Page = () => {
   } = useForm<InputType>();
 
   const onSubmit: SubmitHandler<InputType> = async (data: InputType) => {
-    console.log(data.email, data.password);
-    console.log("peaky blinders");
+
   };
+  const {status,data:user} = useSession()
+  console.log(status)
+
+  if(status==="loading"){
+    return <div className={styles.loading}>Loading...</div>;
+  }
+  if(status==="authenticated"){
+    router.push("/")
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.logoParent}>
@@ -46,7 +56,7 @@ const Page = () => {
             <BsFacebook size={20} style={{ color: "#3498eb" }} />
             <span>Sign up with Facebook</span>
           </button>
-          <button>
+          <button onClick={() => signIn("google")}>
             <FcGoogle size={20} />
             <span>Sign up with Google</span>
           </button>

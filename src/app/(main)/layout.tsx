@@ -21,7 +21,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 
       {children}
       {/* <AudioPlayer/> */}
-      {isModal && <Modal/>}
+      {/* {isModal && <Modal/>} */}
       {/* {someSong && (
         <AudioPlayer/>
       )} */}

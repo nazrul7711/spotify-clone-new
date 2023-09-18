@@ -6,22 +6,22 @@ import Link from "next/link";
 import { BsPersonCircle } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import SearchInput from "./SearchInput";
+import { signOut, useSession } from "next-auth/react";
 
 type NavbarProps = {
-  className:string
-}
+  className: string;
+};
 
-const Navbar = ({className}:NavbarProps) => {
-  let sth = true;
-  let login = true;
+const Navbar = ({ className }: NavbarProps) => {
+  let { data: user, status } = useSession();
+
+  let isAuthenticated = status==="authenticated"
   const [toggle, setToggle] = useState<boolean>(false);
   let path = usePathname();
 
   return (
     <div
-      className={`${styles.wrapper} ${className} ${
-        login ? styles.span : ""
-      }`}
+      className={`${styles.wrapper} ${className} ${ isAuthenticated? styles.span : ""}`}
     >
       <div className={styles.arrows}>
         <div>
@@ -33,7 +33,7 @@ const Navbar = ({className}:NavbarProps) => {
         {path === "/search" && <SearchInput />}
       </div>
       <div className={styles.buttons}>
-        {login ? (
+        {isAuthenticated ? (
           <div className={styles.loginButtons}>
             <Link href="#">Explore Premium</Link>
 
@@ -49,18 +49,16 @@ const Navbar = ({className}:NavbarProps) => {
                 <div>Profile</div>
                 <div>Upgrade to Premium</div>
                 <div>Settings</div>
-                <button>Logout</button>
+                <button onClick={()=>signOut()}>Logout</button>
               </div>
             )}
           </div>
-        ) : sth ? (
+        ) : (
           <div>
             {" "}
             <Link href="/auth/signUp">Sign Up</Link>{" "}
             <Link href="/auth/signIn">Sign In</Link>
           </div>
-        ) : (
-          <button>LogOut</button>
         )}
       </div>
     </div>
