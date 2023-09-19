@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "@/styles/modal.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import { SpotifyContext } from "@/context/spotifyCtx";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const Modal = () => {
+  let ctx = useContext(SpotifyContext);
   return (
     <div className={styles.wrapper}>
-      <div className={styles.backdrop}></div>
+      <div className={styles.backdrop} onClick={() => ctx?.offModal()}></div>
       <div className={styles.modal}>
+        <div className={styles.close} onClick={() => ctx?.offModal()}>
+          < AiFillCloseCircle size={30}/>
+        </div>
+
         <div className={`${styles.item} ${styles.img}`}>
           <Image src={"/desert.jpg"} height={250} width={250} alt="spotofy" />
         </div>

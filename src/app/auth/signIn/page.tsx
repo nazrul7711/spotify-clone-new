@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import styles from "@/styles/signIn.module.scss";
 import { FaSpotify } from "react-icons/fa";
@@ -9,7 +9,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn, useSession } from "next-auth/react";
-
 
 type InputType = {
   email: string;
@@ -29,16 +28,21 @@ const Page = () => {
   } = useForm<InputType>();
 
   const onSubmit: SubmitHandler<InputType> = async (data: InputType) => {
-
+    let res = await signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirect:false
+    });
+    console.log(res)
   };
-  const {status,data:user} = useSession()
-  console.log(status)
+  const { status, data: user } = useSession();
+  console.log(status);
 
-  if(status==="loading"){
+  if (status === "loading") {
     return <div className={styles.loading}>Loading...</div>;
   }
-  if(status==="authenticated"){
-    router.push("/")
+  if (status === "authenticated") {
+    router.push("/");
   }
 
   return (

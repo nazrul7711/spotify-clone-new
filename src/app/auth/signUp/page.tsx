@@ -7,6 +7,8 @@ import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
+import axios, { AxiosError } from "axios";
 
 type InputType = {
   name: string;
@@ -19,23 +21,46 @@ type InputType = {
 };
 
 const page = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<InputType>();
   async function signupHandler(data: InputType) {
-    // let res = await axios.post("/api/register", {
-    //   name: data.name,
-    //   email: data.email,
-    //   password: data.password,
-    //   dob: `${data.year}-${data.month}-${data.day}`,
-    //   gender: data.gender,
-    // });
-    // console.log(res);
+    try {
+      let res = await axios.post("/api/register", {
+        name: data?.name,
+        email: data?.email,
+        password: data?.password,
+        dob: `${data?.year}-${data?.month}-${data?.day}`,
+        gender: data?.gender,
+      });
+      if (res.status === 200) {
+        await signIn("credentials", {
+          email: data?.email,
+          password: data?.password,
+        });
+      }
+    } catch (error) {
+      // Handle errors here
+      console.error("Error:", error);
+      console.log(error);
+      console.log((error as AxiosError).message);
+      console.log((error as AxiosError).response?.data.message);
+      //  console.log(error.data.message);
+      console.log("Request failed");
+    }
   }
   const currentYear = new Date().getFullYear();
-  const router = useRouter();
+  let { status } = useSession();
+
+  if (status === "authenticated") {
+    router.push("/");
+  }
+  if (status === "loading") {
+    return <div className={styles.loading}> Loading...</div>;
+  }
   return (
     <div className={styles.wrapper}>
       <form className={styles.container} onSubmit={handleSubmit(signupHandler)}>
@@ -49,7 +74,7 @@ const page = () => {
             <BsFacebook size={20} />
             <span>Sign up with Facebook</span>
           </button>
-          <button>
+          <button onClick={() => signIn("google")}>
             <FcGoogle size={20} />
             <span>Sign up with Google</span>
           </button>
@@ -131,18 +156,18 @@ const page = () => {
                 {...register("month", { required: "Enter Month" })}
               >
                 <option value="">Month</option>
-                <option value="january">January</option>
-                <option value="february">February</option>
-                <option value="march">March</option>
-                <option value="april">April</option>
-                <option value="may">May</option>
-                <option value="june">June</option>
-                <option value="july">July</option>
-                <option value="august">August</option>
-                <option value="september">September</option>
-                <option value="october">October</option>
-                <option value="november">November</option>
-                <option value="december">December</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
               </select>
               {errors.month && (
                 <p className={styles.error}>{errors.month.message}</p>
@@ -217,7 +242,9 @@ const page = () => {
               <p className={styles.error}>{errors.gender.message}</p>
             )}
           </div>
-          <div className={styles.button}></div>
+          <button type="submit" className={styles.button}>
+            Submit
+          </button>
         </div>
         <p className={styles.link}>
           Have an account? <Link href="/auth/signIn">Log In</Link>
