@@ -9,6 +9,8 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 import axios, { AxiosError } from "axios";
+import toast, { Toaster } from "react-hot-toast";
+
 
 type InputType = {
   name: string;
@@ -43,13 +45,7 @@ const page = () => {
         });
       }
     } catch (error) {
-      // Handle errors here
-      console.error("Error:", error);
-      console.log(error);
-      console.log((error as AxiosError).message);
-      console.log((error as AxiosError).response?.data.message);
-      //  console.log(error.data.message);
-      console.log("Request failed");
+      toast.error((error as AxiosError).response?.data.message);
     }
   }
   const currentYear = new Date().getFullYear();
@@ -250,6 +246,7 @@ const page = () => {
           Have an account? <Link href="/auth/signIn">Log In</Link>
         </p>
       </form>
+      <Toaster/>
     </div>
   );
 };

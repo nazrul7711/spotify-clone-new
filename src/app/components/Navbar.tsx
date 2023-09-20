@@ -7,13 +7,16 @@ import { BsPersonCircle } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import SearchInput from "./SearchInput";
 import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 
 type NavbarProps = {
   className: string;
 };
 
 const Navbar = ({ className }: NavbarProps) => {
-  let { data: user, status } = useSession();
+  let { data, status } = useSession();
+  let user = data?.user
+  console.log(user)
 
   let isAuthenticated = status==="authenticated"
   const [toggle, setToggle] = useState<boolean>(false);
@@ -21,7 +24,9 @@ const Navbar = ({ className }: NavbarProps) => {
 
   return (
     <div
-      className={`${styles.wrapper} ${className} ${ isAuthenticated? styles.span : ""}`}
+      className={`${styles.wrapper} ${className} ${
+        isAuthenticated ? styles.span : ""
+      }`}
     >
       <div className={styles.arrows}>
         <div>
@@ -41,7 +46,17 @@ const Navbar = ({ className }: NavbarProps) => {
               className={styles.IconButton}
               onClick={() => setToggle((p) => !p)}
             >
-              <BsPersonCircle size={30} />
+              {/* {user?.image ? (
+                <Image
+                  src={user?.image}
+                  width={30}
+                  height={30}
+                  alt="person-image"
+                />
+              ) :  */}
+              {/* ( */}
+                <BsPersonCircle size={30} />
+              {/* )} */}
             </div>
             {toggle && (
               <div className={styles.options}>
@@ -49,7 +64,7 @@ const Navbar = ({ className }: NavbarProps) => {
                 <div>Profile</div>
                 <div>Upgrade to Premium</div>
                 <div>Settings</div>
-                <button onClick={()=>signOut()}>Logout</button>
+                <button onClick={() => signOut()}>Logout</button>
               </div>
             )}
           </div>

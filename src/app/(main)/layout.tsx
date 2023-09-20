@@ -9,9 +9,8 @@ import AudioPlayer from "../components/AudioPlayer";
 import { SpotifyContext } from "@/context/spotifyCtx";
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  let someSong = true;
+
   let ctx = useContext(SpotifyContext);
-  console.log(ctx?.showModal)
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   return (
     <div className={styles.wrapper}>

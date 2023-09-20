@@ -16,4 +16,5 @@ projection ?
 what is embedded document
 how to get doc with hobbies only of dance array
 how to get doc with hobbies only of dance object hobbies.sports will work?
+books.aggregate([{$lookup:{from:,localField:,foreignField:,as:}}])
 */

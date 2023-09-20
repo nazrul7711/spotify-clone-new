@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/styles/signIn.module.scss";
 import { FaSpotify } from "react-icons/fa";
 import { BsFacebook } from "react-icons/bs";
@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signIn, useSession } from "next-auth/react";
+import toast, { Toaster } from "react-hot-toast";
 
 type InputType = {
   email: string;
@@ -31,9 +32,12 @@ const Page = () => {
     let res = await signIn("credentials", {
       email: data.email,
       password: data.password,
-      redirect:false
+      redirect: false,
     });
-    console.log(res)
+    console.log(res);
+    if (res?.error) {
+      toast.error(res?.error)
+    }
   };
   const { status, data: user } = useSession();
   console.log(status);
@@ -111,6 +115,7 @@ const Page = () => {
             Don't have an account?{" "}
             <Link href="/auth/signUp">Sign up for Spotify</Link>
           </p>
+          <Toaster/>
         </div>
       </form>
     </div>

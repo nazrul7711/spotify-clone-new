@@ -9,4 +9,12 @@
   .playlist {
     display: flex;
   }
+  .addSong{
+    background-color: $green-color;
+    padding: 1rem;
+    button{
+      padding:1rem 1.2rem;
+      border-radius: 1.5rem;
+    }
+  }
 }
