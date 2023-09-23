@@ -8,6 +8,7 @@ import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import uniqid from "uniqid";
+import aws from "aws-sdk";
 
 const Main = () => {
   let user = "Nazrul";
@@ -29,14 +30,6 @@ const Main = () => {
 
   let { register, formState: errors, handleSubmit } = useForm();
 
-  const s3Client = new S3Client({
-    region: process.env.AWS_LOCATION,
-    credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY!,
-      secretAccessKey: process.env.AWS_SECRET_KEY!,
-    },
-  });
-
   type inputType = {
     songImage: string;
     song: string;
@@ -50,7 +43,7 @@ const Main = () => {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(res);
+    console.log(res)
   };
   async function deleteHandler() {
     // let res = await axios.delete("/api/mongo?email=user2@example.com")
@@ -58,14 +51,17 @@ const Main = () => {
     // let res = await axios.put("/api/mongo");
     // let res = await axios.post("/api/mongo")
     // console.log(res)
-    let res = await axios.post("/api/addSong", {
-      // songImage String
-      // singer String
-      // title String
-      // description String
-      // userIDs String[] @db.ObjectId
-      // users  User[]
-    });
+    let res = await axios.put("/api/mongo");
+    console.log(res);
+    // let res = await axios.post("/api/mongo"
+
+    // songImage String
+    // singer String
+    // title String
+    // description String
+    // userIDs String[] @db.ObjectId
+    // users  User[]
+    // );
   }
   return (
     <div className={styles.wrapper}>
@@ -91,7 +87,9 @@ const Main = () => {
         </form>
       </div>
 
-      <button onClick={deleteHandler}>Delete</button>
+      <button onClick={deleteHandler} style={{ padding: "1rem" }}>
+        Delete
+      </button>
     </div>
   );
 };
@@ -125,6 +123,8 @@ session if u using adapter then strategy is database and to enforce jwt u have t
 getToken({req,nextauth_secret}) to get token
 
 pages is object to specify custom routes like signIn:"auth/signIn"
+
+NextRequest cookies.get kind of methods,nextUrl
 
 
 

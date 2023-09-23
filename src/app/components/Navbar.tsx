@@ -16,7 +16,6 @@ type NavbarProps = {
 const Navbar = ({ className }: NavbarProps) => {
   let { data, status } = useSession();
   let user = data?.user
-  console.log(user)
 
   let isAuthenticated = status==="authenticated"
   const [toggle, setToggle] = useState<boolean>(false);

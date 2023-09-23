@@ -1,0 +1,4 @@
+{"Name":"John Doe","Age":"30","Department":"Sales","Salary":"50000"}
+{"Name":"Jane Smith","Age":"28","Department":"Marketing","Salary":"48000"}
+{"Name":"Jim Brown","Age":"35","Department":"Engineering","Salary":"60000"}
+{"Name":"Sarah Johnson","Age":"32","Department":"HR","Salary":"55000"}

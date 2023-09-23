@@ -8,7 +8,6 @@ const UserSchema = new Schema({
   },
   email: {
     type: String,
-    required: true,
     unique: true,
   },
   song: {
@@ -20,7 +19,12 @@ const UserSchema = new Schema({
     esha:String,
     nazrul:String
   },
-  hobbies:[String],
+  hobbies:[Schema.Types.Mixed],
+  lyrics:[String],
+  volume:Number,
+  target:Number,
+  phone:Schema.Types.Mixed,
+
   createdAt: Date,
   updatedAt: Date,
 });
