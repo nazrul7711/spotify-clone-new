@@ -9,24 +9,32 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import uniqid from "uniqid";
 import aws from "aws-sdk";
+import { useSession } from "next-auth/react";
+import useGetSongs from "@/hooks/useGetSongs";
+import { SongType } from "@/defineType";
 
 const Main = () => {
-  let user = "Nazrul";
-  let playlists = [
-    { id: "1", src: "/samad.jpg", title: "Samad", description: "From Samad" },
-    {
-      id: "2",
-      src: "/rappers.jpg",
-      title: "Rappers",
-      description: "A rappers song",
-    },
-    {
-      id: "3",
-      src: "/church.jpg",
-      title: "Church",
-      description: "From church",
-    },
-  ];
+  let { data: session, status } = useSession();
+  let user = session?.user;
+  const { data: songs, error, isLoading, mutate } = useGetSongs();
+
+  console.log(songs);
+
+  // let playlists = [
+  //   { id: "1", src: "/samad.jpg", title: "Samad", description: "From Samad" },
+  //   {
+  //     id: "2",
+  //     src: "/rappers.jpg",
+  //     title: "Rappers",
+  //     description: "A rappers song",
+  //   },
+  //   {
+  //     id: "3",
+  //     src: "/church.jpg",
+  //     title: "Church",
+  //     description: "From church",
+  //   },
+  // ];
 
   let { register, formState: errors, handleSubmit } = useForm();
 
@@ -43,38 +51,25 @@ const Main = () => {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(res)
+    console.log(res);
   };
   async function deleteHandler() {
-    // let res = await axios.delete("/api/mongo?email=user2@example.com")
-    // console.log(res)
-    // let res = await axios.put("/api/mongo");
-    // let res = await axios.post("/api/mongo")
-    // console.log(res)
     let res = await axios.put("/api/mongo");
     console.log(res);
-    // let res = await axios.post("/api/mongo"
-
-    // songImage String
-    // singer String
-    // title String
-    // description String
-    // userIDs String[] @db.ObjectId
-    // users  User[]
-    // );
   }
   return (
     <div className={styles.wrapper}>
       {user && <h1>Good Morning</h1>}
-      {user && <h3>Made for {user}</h3>}
+      {user && <h3>Made for {user.name}</h3>}
       <ul className={styles.playlist}>
-        {playlists.map((song) => (
+        {songs?.map((song:SongType) => (
           <li key={song.id}>
             <SongCard
-              src={song.src}
+              songImage={song.songImage}
               title={song.title}
               description={song.description}
               id={song.id}
+              song={song.song}
             />
           </li>
         ))}

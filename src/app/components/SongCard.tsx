@@ -6,12 +6,13 @@ import { AiFillPlayCircle } from "react-icons/ai";
 import Link from "next/link";
 
 export interface SongCardProps {
-  src: string;
+  songImage: string;
   title: string;
   description: string;
   id: string;
+  song:string
 }
-const SongCard = ({ id, src, title, description }: SongCardProps) => {
+const SongCard = ({ id, songImage, title, description ,song}: SongCardProps) => {
   const [onHover, setOnHover] = useState<boolean>(false);
   return (
     <div className={styles.wrapper}>
@@ -22,7 +23,7 @@ const SongCard = ({ id, src, title, description }: SongCardProps) => {
           onMouseLeave={() => setOnHover(false)}
         >
           <div className={styles.imgContainer}>
-            <Image src={src} fill={true} alt="playlist" />
+            <Image src={songImage} fill={true} alt="playlist" />
           </div>
           <div className={styles.title}>{title}</div>
           <div className={styles.desc}>{description}</div>
