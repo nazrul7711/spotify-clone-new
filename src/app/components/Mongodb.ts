@@ -81,6 +81,15 @@ explain $elemMatch and how we need it for an array why $and wont work
 
 $set:{"hobbies.$.setSomeMark":true}
 
+ push one element ,push a array like [1,2,3]
+
+ remove a element from an array
+
+ pop forst or the last elememt
+
+ indexes are like ordered list of all the items in the collection
+
+ what are unique index and partial indexes how to implement partial indexes
 
 
 
@@ -89,4 +98,24 @@ $set:{"hobbies.$.setSomeMark":true}
 
 
 
+
+
+
+
+
+*/
+/*
+cookies are stored in client side so when a user is authenticated by server server sends some cookie via e=response headers and this cookie is stored in client side and on subsequent requests this cookie is sent meaning m the same user
+
+res.setHeaders("Set-Cookie","loggedIn=true,expires=45;Secure")
+secure means this cookie will only be served if provided with https
+
+now with every request browser makes it will send this cookie
+
+as cookies are stored in browsers sensitive information like islooged should not be stroed as cookies
+
+Session
+session are stored in backend
+
+express-session
 */

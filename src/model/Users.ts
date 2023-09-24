@@ -10,24 +10,18 @@ const UserSchema = new Schema({
     type: String,
     unique: true,
   },
-  song: {
+  gender: {
     type: String,
+    enum: ["male", "female"],
   },
-  marker: String,
+  marker: Boolean,
   age: Number,
-  sujata:{
-    esha:String,
-    nazrul:String
-  },
-  hobbies:[Schema.Types.Mixed],
-  lyrics:[String],
-  volume:Number,
-  target:Number,
-  phone:Schema.Types.Mixed,
-
+  hobbies: [Schema.Types.Mixed],
   createdAt: Date,
   updatedAt: Date,
 });
+UserSchema.index({ age: 1 }, { partialFilterExpression: { gender: "male" } });
 
 const User = models.User || model("User", UserSchema);
+
 export default User;

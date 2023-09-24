@@ -1,0 +1,75 @@
+@import "variables";
+.wrapper {
+  color: $white-color;
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: rgba(15, 15, 15, 0.9);
+  }
+  .img {
+    display: grid;
+    place-items: center;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .text {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .link,
+  .button {
+    width: max-content;
+    align-self: center;
+    margin-right: 5rem;
+    padding: 1rem 1.8rem;
+    border: none;
+    border-radius: 2rem;
+    font-size: 1rem;
+    color: $black-color;
+  }
+  .link {
+    background-color: rgb(31, 167, 31);
+  }
+  .button {
+    background-color: rgb(50, 50, 50);
+    border: 1px solid $white-color;
+    color: $pure-white;
+  }
+  .close{
+    position :relative;
+    left:93%;
+    top: 3%;
+    cursor: pointer;
+  }
+  .modal {
+    position: absolute;
+    top: 25%;
+    left: 27%;
+    width: 50%;
+    height: 55vh;
+    background-color: rgb(69, 69, 69);
+    z-index: 5;
+    animation: modal 0.2s ease-in;
+
+    display: flex;
+    .item {
+      flex: 1;
+    }
+  }
+  @keyframes modal {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

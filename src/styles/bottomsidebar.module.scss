@@ -2,6 +2,16 @@
 .wrapper {
   background-color: $light-grey;
   height: 100%;
+  color:$white-color;
+  .addSong{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1.2rem;
+    .fileIcon{
+      cursor: pointer;
+    }
+  }
   .first {
     background-color: $light-grey;
     color: $white-color;

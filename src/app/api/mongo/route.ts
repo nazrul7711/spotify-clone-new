@@ -18,7 +18,7 @@ export async function DELETE(req: Request) {
   let { searchParams } = new URL(req.url);
   // console.log(searchParams.get('email'))
   let email = searchParams.get("email");
-  let res = await User.deleteOne({ email });
+  let res = await User.deleteMany({ lyrics:{$exists:true,$size:0} });
   return NextResponse.json(res);
 }
 
@@ -28,12 +28,11 @@ export async function PUT(req: Request) {
   );
   console.log("jaaneman");
 
-  let res = await User.updateMany(
-    { hobbies:{$elemMatch:{title:"Sports",frequency:3}}},
+  let res = await User.updateOne(
+    { _id: "650d1dacf7e1a86f1e8b6029" },
     {
-      $set:{"hobbies.$.isSporty":true}
-    },
-    { upsert: true }
+      $pop: { "lyrics":-1 },
+    }
   );
   return NextResponse.json(res);
 }
@@ -45,7 +44,8 @@ export async function POST(req: Request) {
   console.log("connected  to db");
   let users = await User.insertMany([
     {
-      name: "Max",
+      name: "Maxy",
+      email:"maxy@gmail.com",
 
       hobbies: [
         {
@@ -57,10 +57,12 @@ export async function POST(req: Request) {
           frequency: 6,
         },
       ],
-      phone: 131782734,
+      gender:"female",
     },
+
     {
       name: "Manuel",
+      email:"manuel@gmail.com",
       hobbies: [
         {
           title: "Cooking",
@@ -71,7 +73,7 @@ export async function POST(req: Request) {
           frequency: 2,
         },
       ],
-      phone: "012177972",
+gender:"male",
       age: 30,
     },
     {

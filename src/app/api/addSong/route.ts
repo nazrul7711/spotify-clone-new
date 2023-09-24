@@ -55,9 +55,9 @@ export async function POST(req: NextRequest) {
         data: {
           songImage: imageData.Location,
           song: songData.Location,
-          singer: "sia",
-          title: "unstoppable",
-          description: "Alternative Indie",
+          singer: "Shilpa Vishal",
+          title: "Ghungroo",
+          description: "Dance Indie",
         },
       });
       if (newSong) {

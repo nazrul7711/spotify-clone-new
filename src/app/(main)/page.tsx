@@ -20,22 +20,6 @@ const Main = () => {
 
   console.log(songs);
 
-  // let playlists = [
-  //   { id: "1", src: "/samad.jpg", title: "Samad", description: "From Samad" },
-  //   {
-  //     id: "2",
-  //     src: "/rappers.jpg",
-  //     title: "Rappers",
-  //     description: "A rappers song",
-  //   },
-  //   {
-  //     id: "3",
-  //     src: "/church.jpg",
-  //     title: "Church",
-  //     description: "From church",
-  //   },
-  // ];
-
   let { register, formState: errors, handleSubmit } = useForm();
 
   type inputType = {
@@ -51,10 +35,10 @@ const Main = () => {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log(res);
+    mutate();
   };
   async function deleteHandler() {
-    let res = await axios.put("/api/mongo");
+    let res = await axios.post("/api/mongo");
     console.log(res);
   }
   return (
@@ -62,7 +46,7 @@ const Main = () => {
       {user && <h1>Good Morning</h1>}
       {user && <h3>Made for {user.name}</h3>}
       <ul className={styles.playlist}>
-        {songs?.map((song:SongType) => (
+        {songs?.map((song: SongType) => (
           <li key={song.id}>
             <SongCard
               songImage={song.songImage}

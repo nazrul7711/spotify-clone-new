@@ -2,9 +2,15 @@
 import React, { useContext } from "react";
 import styles from "@/styles/bottomsidebar.module.scss";
 import { BiLibrary } from "react-icons/bi";
-import { AiOutlinePlus, AiOutlineHeart, AiFillPushpin } from "react-icons/ai";
+import {
+  AiOutlinePlus,
+  AiOutlineHeart,
+  AiFillPushpin,
+  AiFillFileAdd,
+} from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import { SpotifyContext } from "@/context/spotifyCtx";
+
 
 const BottomSidebar = () => {
   let { status } = useSession();
@@ -26,6 +32,10 @@ const BottomSidebar = () => {
         <div className={styles.plus} onClick={showModalHandler}>
           <AiOutlinePlus />
         </div>
+      </div>
+      <div className={styles.addSong}>
+        <div className={styles.fileIcon} onClick={()=>ctx?.onSongModal()}><AiFillFileAdd/></div>
+        <div>Add Song</div>
       </div>
       {isAthenticated && (
         <div className={styles.likedSongs}>
