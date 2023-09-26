@@ -2,21 +2,27 @@ import mongoose from "mongoose";
 const { Schema, model, models } = mongoose;
 
 const UserSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+  gender:{
+    type:String,
+    enum:["male","female"],
   },
-  email: {
-    type: String,
-    unique: true,
+  name:String,
+  location: {
+      street: String,
+      city: String,
+      state: String,
   },
-  gender: {
-    type: String,
-    enum: ["male", "female"],
+  email:String,
+  login:{
+    username:String,
+    password:String
   },
-  marker: Boolean,
-  age: Number,
-  hobbies: [Schema.Types.Mixed],
+  phone:String,
+  registered:{
+    date:String,
+    age:Number
+  },
+
   createdAt: Date,
   updatedAt: Date,
 });

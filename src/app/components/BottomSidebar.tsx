@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import styles from "@/styles/bottomsidebar.module.scss";
 import { BiLibrary } from "react-icons/bi";
+import useSwr from "swr"
 import {
   AiOutlinePlus,
   AiOutlineHeart,
@@ -10,13 +11,18 @@ import {
 } from "react-icons/ai";
 import { useSession } from "next-auth/react";
 import { SpotifyContext } from "@/context/spotifyCtx";
+import fetcher from "@/lib/fetcher";
+
 
 
 const BottomSidebar = () => {
   let { status } = useSession();
+  let {data,error,isLoading,mutate}=useSwr("/api/getUser",fetcher)
+  
   let isAthenticated = status === "authenticated";
   let ctx = useContext(SpotifyContext);
 
+  console.log(data)
   let num = 2;
 
   function showModalHandler() {

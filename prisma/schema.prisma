@@ -54,7 +54,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
-  songIDs String[]   @db.ObjectId
+  songIDs String[]   @db.ObjectId @default([])
   songs  Song[] @relation(fields: [songIDs], references: [id])
 }
 

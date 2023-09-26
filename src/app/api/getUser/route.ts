@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth/next";
 import { NextResponse } from "next/server";
 import prismadb from "@/utils/prismaClient";
 
-export async function GET(req: Request, { params }: { params: { songId: string } }) {
+export async function GET() {
   const session = await getServerSession(authOptions);
   if (!session) {
     return NextResponse.json(
@@ -11,10 +11,10 @@ export async function GET(req: Request, { params }: { params: { songId: string }
       { status: 401 }
     );
   }
-  let song = await prismadb.song.findUnique({
-    where: { id: params.songId },
-  });
-  console.log(song)
 
-  return NextResponse.json(song);
+  let user = await prismadb.user.findUnique({
+    where: { email: session.user?.email! },
+  });
+
+  return NextResponse.json({ user: user });
 }

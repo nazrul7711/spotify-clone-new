@@ -18,8 +18,6 @@ const Main = () => {
   let user = session?.user;
   const { data: songs, error, isLoading, mutate } = useGetSongs();
 
-  console.log(songs);
-
   let { register, formState: errors, handleSubmit } = useForm();
 
   type inputType = {
@@ -38,7 +36,7 @@ const Main = () => {
     mutate();
   };
   async function deleteHandler() {
-    let res = await axios.post("/api/mongo");
+    let res = await axios.put("/api/tryTest");
     console.log(res);
   }
   return (

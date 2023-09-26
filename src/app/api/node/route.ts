@@ -67,4 +67,10 @@ suppose u want to console.log a message when the writestream is done
 
 transform a csv data to object
 
+with buffer data is send in small chunks and the client has to wait to process it before the whole data is arrived
+
+but with streams we can wtart working as soon we get the first lot of data
+
+spatial efficiancy a buffer cannot be greater than 1 gb and with buffer this is the problem few of these big buffer and our space is out
+
 */

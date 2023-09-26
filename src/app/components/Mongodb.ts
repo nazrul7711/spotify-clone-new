@@ -92,6 +92,10 @@ $set:{"hobbies.$.setSomeMark":true}
  what are unique index and partial indexes how to implement partial indexes
 
 
+ what is GEOSPATIAL Data
+
+ 
+
 
 
 
