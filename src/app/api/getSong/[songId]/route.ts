@@ -14,7 +14,6 @@ export async function GET(req: Request, { params }: { params: { songId: string }
   let song = await prismadb.song.findUnique({
     where: { id: params.songId },
   });
-  console.log(song)
 
   return NextResponse.json(song);
 }

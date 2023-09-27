@@ -6,7 +6,4 @@ export default  function useAvailableSong(songId:string){
   return {
     data,error,mutate,isLoading
   }
-
-
-
 }

@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const path = require("path")
+const path = require("path");
 const nextConfig = {
   images: {
     domains: ["nextjs-project-nazrul.s3.ap-south-1.amazonaws.com"],
@@ -9,4 +9,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig
+module.exports = nextConfig;

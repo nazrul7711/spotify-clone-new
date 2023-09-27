@@ -13,7 +13,7 @@ export async function GET(req:Request){
   let song = await prismadb.user.findMany({
     where: {
       songIDs: {
-        has: "650ec66fd819c3b6ab0a059a",
+        has: songId,
       },
     },
   });

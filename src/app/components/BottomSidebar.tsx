@@ -22,8 +22,8 @@ const BottomSidebar = () => {
   let isAthenticated = status === "authenticated";
   let ctx = useContext(SpotifyContext);
 
-  console.log(data)
-  let num = 2;
+
+  let num =data?.user.songIDs.length
 
   function showModalHandler() {
     ctx?.onModal();

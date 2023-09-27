@@ -7,11 +7,14 @@ import styles from "@/styles/layout.module.scss";
 import Modal from "../components/Modal";
 import AudioPlayer from "../components/AudioPlayer";
 import { SpotifyContext } from "@/context/spotifyCtx";
+import { useSession } from "next-auth/react";
 
 const Layout = ({ children }: { children: ReactNode }) => {
 
   let ctx = useContext(SpotifyContext);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  let {status}  = useSession()
+  let isAuthenticated = status==="authenticated"
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.sidebar}>
@@ -21,11 +24,10 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Navbar className={styles.navbar} />
 
       {children}
-      {/* <AudioPlayer/> */}
       {ctx?.showModal && <Modal />}
-      {/* {someSong && (
+      {isAuthenticated && (
         <AudioPlayer/>
-      )} */}
+      )}
     </div>
   );
 };
