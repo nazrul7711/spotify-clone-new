@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, useContext, useState } from "react";
+import React, { ReactNode, useContext } from "react";
 import Navbar from "../components/Navbar";
 import TopSidebar from "../components/TopSidebar";
 import BottomSidebar from "../components/BottomSidebar";
@@ -8,12 +8,12 @@ import Modal from "../components/Modal";
 import AudioPlayer from "../components/AudioPlayer";
 import { SpotifyContext } from "@/context/spotifyCtx";
 import { useSession } from "next-auth/react";
+import SongModal from "../components/SongModal";
 
 const Layout = ({ children }: { children: ReactNode }) => {
-
   let ctx = useContext(SpotifyContext);
-  let {status}  = useSession()
-  let isAuthenticated = status==="authenticated"
+  let { status } = useSession();
+  let isAuthenticated = status === "authenticated";
 
   return (
     <div className={styles.wrapper}>
@@ -24,10 +24,11 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Navbar className={styles.navbar} />
 
       {children}
+      
       {ctx?.showModal && <Modal />}
-      {isAuthenticated && (
-        <AudioPlayer/>
-      )}
+      //no
+      {ctx?.showSongModal && <SongModal />} 
+      {isAuthenticated && <AudioPlayer />}
     </div>
   );
 };

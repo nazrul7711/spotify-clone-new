@@ -23,6 +23,13 @@ export async function POST(req: NextRequest) {
     const dt = await req.formData();
     const file1: File | null = dt.get("songImage") as unknown as File;
     const file2: File | null = dt.get("song") as unknown as File;
+    const title: string | null = dt.get("title") as unknown as string;
+    const description: string | null = dt.get("description") as unknown as string;
+    const singer: string | null = dt.get("description") as unknown as string;
+    console.log(singer)
+
+
+    console.log(dt.get("title"))
     if (!file1 || !file2) {
       return NextResponse.json({ success: false });
     }
@@ -30,6 +37,7 @@ export async function POST(req: NextRequest) {
     const imageBuffer = Buffer.from(imageBytes);
     const songBytes = await file2.arrayBuffer();
     const songBuffer = Buffer.from(songBytes);
+
 
     const imageUniqId = uniqid();
     const songUniqId = uniqid();
@@ -55,12 +63,12 @@ export async function POST(req: NextRequest) {
         data: {
           songImage: imageData.Location,
           song: songData.Location,
-          singer: "Shilpa Vishal",
-          title: "Ghungroo",
-          description: "Dance Indie",
+          singer: singer,
+          title: title,
+          description: description,
         },
       });
-      if (newSong) {
+      if (true) {
         return NextResponse.json("success");
       }
     }

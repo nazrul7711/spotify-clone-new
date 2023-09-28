@@ -27,17 +27,27 @@ const AudioPlayer = () => {
   let song = context?.song;
   let songId = context?.song?.id!;
 
-  let { data } = useAvailableSong(songId);
+  let { data } = useSwr(
+    songId ? `/api/songAvailable?songId=${songId}` : null,
+    fetcher
+  );
+
   let { mutate } = useSwr("/api/getUser", fetcher);
-  const [color, setColor] = useState<boolean | null>(null);
 
   useEffect(() => {
     if (data?.length === 0) {
-      setColor(false);
+      context?.like();
     } else {
-      setColor(true);
+      context?.unlike();
     }
   }, [data]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+    }
+    setIsPlaying(false);
+  }, [song]);
 
   async function addFavoriteHandler() {
     if (!context?.liked) {

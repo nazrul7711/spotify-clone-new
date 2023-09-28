@@ -18,27 +18,22 @@ const Main = () => {
   let user = session?.user;
   const { data: songs, error, isLoading, mutate } = useGetSongs();
 
-  let { register, formState: errors, handleSubmit } = useForm();
+  // type inputType = {
+  //   songImage: string;
+  //   song: string;
+  // };
+  // const submitHandler: SubmitHandler<inputType> = async (data) => {
+  //   let formData1 = new FormData();
+  //   formData1.append("songImage", data.songImage[0]);
+  //   formData1.append("song", data.song[0]);
+  //    await axios.post("/api/addSong", formData1, {
+  //     headers: {
+  //       "Content-Type": "multipart/form-data",
+  //     },
+  //   });
+  //   mutate();
+  // };
 
-  type inputType = {
-    songImage: string;
-    song: string;
-  };
-  const submitHandler: SubmitHandler<inputType> = async (data) => {
-    let formData1 = new FormData();
-    formData1.append("songImage", data.songImage[0]);
-    formData1.append("song", data.song[0]);
-    let res = await axios.post("/api/addSong", formData1, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    mutate();
-  };
-  async function deleteHandler() {
-    let res = await axios.put("/api/tryTest");
-    console.log(res);
-  }
   return (
     <div className={styles.wrapper}>
       {user && <h1>Good Morning</h1>}
@@ -56,7 +51,7 @@ const Main = () => {
           </li>
         ))}
       </ul>
-      <div className={styles.addSong}>
+      {/* <div className={styles.addSong}>
         <form onSubmit={handleSubmit(submitHandler)}>
           <input type="file" {...register("songImage")} />
           <input type="file" {...register("song")} />
@@ -66,7 +61,7 @@ const Main = () => {
 
       <button onClick={deleteHandler} style={{ padding: "1rem" }}>
         Delete
-      </button>
+      </button> */}
     </div>
   );
 };

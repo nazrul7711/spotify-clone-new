@@ -10,51 +10,54 @@
     z-index: 1;
     background-color: rgba(15, 15, 15, 0.9);
   }
-  .img {
-    display: grid;
-    place-items: center;
-  }
-  .details {
+  .songform {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+    padding: 1rem;
+    margin-top: 2.2rem;
+    width: 100%;
+    gap: .6rem;
+
+    button {
+      width: 80%;
+      height: 2rem;
+      outline: none;
+      border: none;
+      background-color: $green-color;
+      font-size: large;
+      margin: 0 auto;
+      margin-top: 1rem;
+    }
+    div {
+      display: flex;
+      width: 80%;
+      flex-direction: column;
+      margin: 0 auto;
+      label {
+        font-size: large;
+        margin: 0.3rem;
+      }
+      input {
+        width: 100%;
+        height: 2rem;
+        outline: none;
+        border: none;
+        padding: .3rem;
+      }
+    }
   }
-  .text {
-    font-size: 2rem;
-    font-weight: 500;
-  }
-  .link,
-  .button {
-    width: max-content;
-    align-self: center;
-    margin-right: 5rem;
-    padding: 1rem 1.8rem;
-    border: none;
-    border-radius: 2rem;
-    font-size: 1rem;
-    color: $black-color;
-  }
-  .link {
-    background-color: rgb(31, 167, 31);
-  }
-  .button {
-    background-color: rgb(50, 50, 50);
-    border: 1px solid $white-color;
-    color: $pure-white;
-  }
-  .close{
-    position :relative;
-    left:93%;
+  .close {
+    position: relative;
+    left: 93%;
     top: 3%;
     cursor: pointer;
   }
   .modal {
     position: absolute;
-    top: 25%;
+    top: 20%;
     left: 27%;
     width: 50%;
-    height: 55vh;
+    height: 70vh;
     background-color: rgb(69, 69, 69);
     z-index: 5;
     animation: modal 0.2s ease-in;

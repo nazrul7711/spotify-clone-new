@@ -11,7 +11,6 @@ import { SpotifyContext } from "@/context/spotifyCtx";
 const AddFavorite = ({ songId }: { songId: string }) => {
   let { data } = useAvailableSong(songId);
   let { mutate } = useSwr("/api/getUser", fetcher);
-  const [color, setColor] = useState<boolean | null>(null);
   let context = useContext(SpotifyContext);
   useEffect(() => {
     if (data?.length === 0) {
