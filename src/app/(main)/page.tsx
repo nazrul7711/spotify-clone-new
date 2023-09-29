@@ -1,38 +1,15 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import styles from "@/styles/mainpage.module.scss";
-import PlaylistCard from "../components/SongCard";
-import Link from "next/link";
 import SongCard from "../components/SongCard";
-import axios from "axios";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-import uniqid from "uniqid";
-import aws from "aws-sdk";
 import { useSession } from "next-auth/react";
 import useGetSongs from "@/hooks/useGetSongs";
 import { SongType } from "@/defineType";
 
 const Main = () => {
-  let { data: session, status } = useSession();
+  let { data: session } = useSession();
   let user = session?.user;
-  const { data: songs, error, isLoading, mutate } = useGetSongs();
-
-  // type inputType = {
-  //   songImage: string;
-  //   song: string;
-  // };
-  // const submitHandler: SubmitHandler<inputType> = async (data) => {
-  //   let formData1 = new FormData();
-  //   formData1.append("songImage", data.songImage[0]);
-  //   formData1.append("song", data.song[0]);
-  //    await axios.post("/api/addSong", formData1, {
-  //     headers: {
-  //       "Content-Type": "multipart/form-data",
-  //     },
-  //   });
-  //   mutate();
-  // };
+  const { data: songs } = useGetSongs();
 
   return (
     <div className={styles.wrapper}>
@@ -51,17 +28,6 @@ const Main = () => {
           </li>
         ))}
       </ul>
-      {/* <div className={styles.addSong}>
-        <form onSubmit={handleSubmit(submitHandler)}>
-          <input type="file" {...register("songImage")} />
-          <input type="file" {...register("song")} />
-          <button type="submit">Add Song</button>
-        </form>
-      </div>
-
-      <button onClick={deleteHandler} style={{ padding: "1rem" }}>
-        Delete
-      </button> */}
     </div>
   );
 };
@@ -97,6 +63,16 @@ getToken({req,nextauth_secret}) to get token
 pages is object to specify custom routes like signIn:"auth/signIn"
 
 NextRequest cookies.get kind of methods,nextUrl
+
+how to handle  Rendered more hooks than during the previous render (React) ?
+
+how to fetch data conditionally useSwr? and dependant rendering?
+
+how to use useSwr with click of a button?
+
+if you have a Link and you want to a absolute path how u gonna do it?
+
+dont export data fetcher function .
 
 
 

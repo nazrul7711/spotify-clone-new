@@ -24,9 +24,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Navbar className={styles.navbar} />
 
       {children}
-      
+
       {ctx?.showModal && <Modal />}
-      //no
       {ctx?.showSongModal && <SongModal />} 
       {isAuthenticated && <AudioPlayer />}
     </div>

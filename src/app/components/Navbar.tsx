@@ -7,7 +7,6 @@ import { BsPersonCircle } from "react-icons/bs";
 import { usePathname } from "next/navigation";
 import SearchInput from "./SearchInput";
 import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
 
 type NavbarProps = {
   className: string;
@@ -15,7 +14,6 @@ type NavbarProps = {
 
 const Navbar = ({ className }: NavbarProps) => {
   let { data, status } = useSession();
-  let user = data?.user
 
   let isAuthenticated = status==="authenticated"
   const [toggle, setToggle] = useState<boolean>(false);

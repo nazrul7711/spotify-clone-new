@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import styles from "@/styles/audio.module.scss";
 import Image from "next/image";
+
 import {
   AiFillPauseCircle,
   AiFillPlayCircle,
@@ -10,7 +11,6 @@ import {
 import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
 import { HiSpeakerWave } from "react-icons/hi2";
 import { SpotifyContext } from "@/context/spotifyCtx";
-import useAvailableSong from "@/hooks/useSongAvailable";
 import useSwr from "swr";
 import fetcher from "@/lib/fetcher";
 
@@ -36,11 +36,11 @@ const AudioPlayer = () => {
 
   useEffect(() => {
     if (data?.length === 0) {
-      context?.like();
-    } else {
       context?.unlike();
+    } else {
+      context?.like();
     }
-  }, [data]);
+  }, [data,context]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -80,7 +80,7 @@ const AudioPlayer = () => {
   };
 
   function whilePlaying() {
-    progressRef.current!.value = audioRef.current?.currentTime!.toString();
+    progressRef.current!.value = (audioRef.current?.currentTime)!.toString();
     progressRef.current?.style.setProperty(
       "--progress-width",
       `${(parseInt(progressRef.current?.value) / duration) * 100}%`
@@ -216,6 +216,7 @@ const AudioPlayer = () => {
             onChange={volumeHandler}
           />
           )
+
         </div>
       </div>
     </div>

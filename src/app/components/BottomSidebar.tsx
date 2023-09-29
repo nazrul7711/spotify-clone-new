@@ -17,7 +17,7 @@ import fetcher from "@/lib/fetcher";
 
 const BottomSidebar = () => {
   let { status } = useSession();
-  let {data,error,isLoading,mutate}=useSwr("/api/getUser",fetcher)
+  let {data}=useSwr("/api/getUser",fetcher)
   
   let isAthenticated = status === "authenticated";
   let ctx = useContext(SpotifyContext);

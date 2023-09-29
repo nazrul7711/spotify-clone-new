@@ -22,7 +22,7 @@ type InputType = {
   gender: string;
 };
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const {
     register,
@@ -45,7 +45,9 @@ const page = () => {
         });
       }
     } catch (error) {
-      toast.error((error as AxiosError).response?.data.message);
+      if(error instanceof AxiosError){
+        toast.error(error.response?.data.message);
+      }
     }
   }
   const currentYear = new Date().getFullYear();
@@ -65,7 +67,7 @@ const page = () => {
             <FaSpotify size={40} />
             <div>Spotify</div>
           </div>
-          <div>Sign up for free to start listening.</div>
+          <div>Sign up for free to start listening</div>
           <button>
             <BsFacebook size={20} />
             <span>Sign up with Facebook</span>
@@ -78,7 +80,7 @@ const page = () => {
         </div>
         <div className={styles.general}>
           <div className={styles.email}>
-            <div className={styles.title}> What's your Name?</div>
+            <div className={styles.title}> What&apos;s your Name&quest;</div>
             <input
               type="text"
               {...register("name", { required: "this field is required" })}
@@ -89,7 +91,7 @@ const page = () => {
             )}
           </div>
           <div className={styles.email}>
-            <div className={styles.title}> What's your email?</div>
+            <div className={styles.title}> What&apos;s your email&quest;</div>
             <input
               type="text"
               {...register("email", {
@@ -116,7 +118,7 @@ const page = () => {
                   value:
                     /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                   message:
-                    "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:",
+                    "Minimum eight characters&apos; at least one uppercase letter&apos; one lowercase letter&apos; one number and one special character",
                 },
               })}
               placeholder="Create a password"
@@ -125,7 +127,9 @@ const page = () => {
               <p className={styles.error}>{errors.password.message}</p>
             )}
           </div>
-          <div className={styles.title}>What's your date of birth?</div>
+          <div className={styles.title}>
+            What&apos;s your date of birth&quest;
+          </div>
           <div className={styles.dob}>
             <div>
               <p>Year</p>
@@ -187,7 +191,7 @@ const page = () => {
               )}
             </div>
           </div>
-          <div className={styles.title}>What's your gender?</div>
+          <div className={styles.title}>What's your gender&quest;</div>
           <div className={styles.gender}>
             <label htmlFor="male">
               <input
@@ -243,12 +247,12 @@ const page = () => {
           </button>
         </div>
         <p className={styles.link}>
-          Have an account? <Link href="/auth/signIn">Log In</Link>
+          Have an account&quest; <Link href="/auth/signIn">Log In</Link>
         </p>
       </form>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 };
 
-export default page;
+export default Page;

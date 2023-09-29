@@ -39,8 +39,8 @@ const Page = () => {
       toast.error(res?.error)
     }
   };
-  const { status, data: user } = useSession();
-  console.log(status);
+  const { status } = useSession();
+
 
   if (status === "loading") {
     return <div className={styles.loading}>Loading...</div>;
@@ -98,7 +98,7 @@ const Page = () => {
                   value:
                     /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                   message:
-                    "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:",
+                    "Minimum eight characters &rsquo; at least one uppercase letter&rsquo; one lowercase letter&rsquo; one number and one special character:",
                 },
               })}
             />
@@ -115,7 +115,7 @@ const Page = () => {
             Don't have an account?{" "}
             <Link href="/auth/signUp">Sign up for Spotify</Link>
           </p>
-          <Toaster/>
+          <Toaster />
         </div>
       </form>
     </div>

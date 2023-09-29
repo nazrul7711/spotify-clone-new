@@ -4,11 +4,7 @@ import { PageConfig } from "next";
 import { S3 } from "aws-sdk";
 import prismadb from "@/utils/prismaClient";
 
-export const config: PageConfig = {
-  api: {
-    bodyParser: false,
-  },
-};
+
 
 const s3Client = new S3({
   region: process.env.AWS_LOCATION,
@@ -26,10 +22,7 @@ export async function POST(req: NextRequest) {
     const title: string | null = dt.get("title") as unknown as string;
     const description: string | null = dt.get("description") as unknown as string;
     const singer: string | null = dt.get("description") as unknown as string;
-    console.log(singer)
 
-
-    console.log(dt.get("title"))
     if (!file1 || !file2) {
       return NextResponse.json({ success: false });
     }
@@ -68,7 +61,7 @@ export async function POST(req: NextRequest) {
           description: description,
         },
       });
-      if (true) {
+      if (newSong) {
         return NextResponse.json("success");
       }
     }

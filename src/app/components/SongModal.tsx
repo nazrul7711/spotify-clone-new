@@ -5,6 +5,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { useForm, SubmitHandler } from "react-hook-form";
 import useGetSongs from "@/hooks/useGetSongs";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 type SongType = {
   song: string;
@@ -15,28 +16,34 @@ type SongType = {
 };
 
 const SongModal = () => {
-  const { register, formState: errors, handleSubmit ,reset} = useForm<SongType>();
+  const {
+    register,
+    formState: errors,
+    handleSubmit,
+    reset,
+  } = useForm<SongType>();
   const { mutate } = useGetSongs();
   let ctx = useContext(SpotifyContext);
   const submitHandler: SubmitHandler<SongType> = async (data) => {
     let formData1 = new FormData();
-    try{
+    try {
       formData1.append("songImage", data.songImage[0]);
       formData1.append("song", data.song[0]);
       formData1.append("singer", data.singer);
       formData1.append("description", data.description);
       formData1.append("title", data.title);
-      let res = await axios.post("/api/addSong", formData1, {
+      await axios.post("/api/addSong", formData1, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+      toast("song added");
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      }
     }
-    catch(error){
-      console.log(error)
-
-    }
-    reset()
+    reset();
     mutate();
   };
   return (
@@ -94,6 +101,7 @@ const SongModal = () => {
           </div>
           <button type="submit">Submit</button>
         </form>
+        <Toaster />
       </div>
     </div>
   );

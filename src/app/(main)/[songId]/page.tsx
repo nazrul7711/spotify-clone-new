@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "@/styles/song.module.scss";
 import Image from "next/image";
-import { AiFillPlayCircle } from "react-icons/ai";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import AddFavorite from "@/app/components/AddFavorite";
 import { headers } from "next/headers";
 import Player from "@/app/components/Player";
 
-export async function getSong(songId: string) {
+async function getSong(songId: string) {
   let res = await fetch(`http://localhost:3000/api/getSong/${songId}`, {
     method: "GET",
     headers: headers(),

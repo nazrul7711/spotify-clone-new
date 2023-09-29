@@ -10,17 +10,18 @@ export async function PUT(req: Request) {
   if (!session) {
     throw new Error("user not logged in");
   }
-  const { songIDs } = await prismadb.user.findUnique({
+  const data = await prismadb.user.findUnique({
     where: {
       email: session.user?.email!,
     },
   });
+  let songIds =data?.songIDs
   let updatedUser =await prismadb.user.update({
     where: {
       email: session.user?.email!,
     },
     data: {
-      songIDs: songIDs.filter((songId: string) => songID !== songId),
+      songIDs: songIds?.filter((songId: string) => songID !== songId),
     },
   });
   return NextResponse.json(updatedUser);

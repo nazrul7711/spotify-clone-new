@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect,  useContext } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import styles from "@/styles/favorite.module.scss";
 import axios from "axios";
@@ -18,7 +18,7 @@ const AddFavorite = ({ songId }: { songId: string }) => {
     } else {
       context?.like();
     }
-  }, [data]);
+  }, [data,context]);
 
   async function addFavoriteHandler() {
     if (!context?.liked) {
