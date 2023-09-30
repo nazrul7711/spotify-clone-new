@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import styles from "@/styles/signIn.module.scss";
 import { FaSpotify } from "react-icons/fa";
 import { BsFacebook } from "react-icons/bs";
@@ -34,7 +34,6 @@ const Page = () => {
       password: data.password,
       redirect: false,
     });
-    console.log(res);
     if (res?.error) {
       toast.error(res?.error)
     }
@@ -98,7 +97,7 @@ const Page = () => {
                   value:
                     /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                   message:
-                    "Minimum eight characters &rsquo; at least one uppercase letter&rsquo; one lowercase letter&rsquo; one number and one special character:",
+                    "Minimum eight characters  at least one uppercase letter one lowercase letter one number and one special character",
                 },
               })}
             />

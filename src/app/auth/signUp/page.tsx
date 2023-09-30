@@ -11,7 +11,6 @@ import { signIn, useSession } from "next-auth/react";
 import axios, { AxiosError } from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
-
 type InputType = {
   name: string;
   email: string;
@@ -45,7 +44,7 @@ const Page = () => {
         });
       }
     } catch (error) {
-      if(error instanceof AxiosError){
+      if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
       }
     }
@@ -80,7 +79,7 @@ const Page = () => {
         </div>
         <div className={styles.general}>
           <div className={styles.email}>
-            <div className={styles.title}> What&apos;s your Name&quest;</div>
+            <div className={styles.title}> What's your Name?</div>
             <input
               type="text"
               {...register("name", { required: "this field is required" })}
@@ -91,7 +90,7 @@ const Page = () => {
             )}
           </div>
           <div className={styles.email}>
-            <div className={styles.title}> What&apos;s your email&quest;</div>
+            <div className={styles.title}> What's your email?</div>
             <input
               type="text"
               {...register("email", {
@@ -118,7 +117,7 @@ const Page = () => {
                   value:
                     /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                   message:
-                    "Minimum eight characters&apos; at least one uppercase letter&apos; one lowercase letter&apos; one number and one special character",
+                    "Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character",
                 },
               })}
               placeholder="Create a password"
@@ -127,9 +126,7 @@ const Page = () => {
               <p className={styles.error}>{errors.password.message}</p>
             )}
           </div>
-          <div className={styles.title}>
-            What&apos;s your date of birth&quest;
-          </div>
+          <div className={styles.title}>What's your date of birth&quest;</div>
           <div className={styles.dob}>
             <div>
               <p>Year</p>
@@ -247,7 +244,7 @@ const Page = () => {
           </button>
         </div>
         <p className={styles.link}>
-          Have an account&quest; <Link href="/auth/signIn">Log In</Link>
+          Have an account? <Link href="/auth/signIn">Log In</Link>
         </p>
       </form>
       <Toaster />
