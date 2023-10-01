@@ -20,10 +20,12 @@ const SongCard = ({
   song,
 }: SongCardProps) => {
   const [onHover, setOnHover] = useState<boolean>(false);
-  console.log(`${process.env.NEXT_PUBLIC_URL}/${id}`);
+
+  console.log("ID:",id);
+
   return (
     <div className={styles.wrapper}>
-      <Link href={`${process.env.NEXT_PUBLIC_URL}/${id}`}>
+     {id && <Link href={`${process.env.NEXT_PUBLIC_URL}/${id}`}>
         <div
           className={styles.container}
           onMouseEnter={() => setOnHover(true)}
@@ -40,7 +42,7 @@ const SongCard = ({
             </div>
           )}
         </div>
-      </Link>
+      </Link>}
     </div>
   );
 };
