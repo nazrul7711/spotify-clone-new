@@ -21,28 +21,31 @@ const SongCard = ({
 }: SongCardProps) => {
   const [onHover, setOnHover] = useState<boolean>(false);
 
-  console.log("ID:",id);
+  console.log("ID:", id);
+  console.log("link", `${process.env.NEXT_PUBLIC_URL}/${id}`);
 
   return (
     <div className={styles.wrapper}>
-     {id && <Link href={`${process.env.NEXT_PUBLIC_URL}/${id}`}>
-        <div
-          className={styles.container}
-          onMouseEnter={() => setOnHover(true)}
-          onMouseLeave={() => setOnHover(false)}
-        >
-          <div className={styles.imgContainer}>
-            <Image src={songImage} fill={true} alt="playlist" />
-          </div>
-          <div className={styles.title}>{title}</div>
-          <div className={styles.desc}>{description}</div>
-          {onHover && (
-            <div className={styles.play}>
-              <AiFillPlayCircle size={45} style={{ color: "#48EA91" }} />
+      {id && (
+        <Link href={`${process.env.NEXT_PUBLIC_URL}/${id}`}>
+          <div
+            className={styles.container}
+            onMouseEnter={() => setOnHover(true)}
+            onMouseLeave={() => setOnHover(false)}
+          >
+            <div className={styles.imgContainer}>
+              <Image src={songImage} fill={true} alt="playlist" />
             </div>
-          )}
-        </div>
-      </Link>}
+            <div className={styles.title}>{title}</div>
+            <div className={styles.desc}>{description}</div>
+            {onHover && (
+              <div className={styles.play}>
+                <AiFillPlayCircle size={45} style={{ color: "#48EA91" }} />
+              </div>
+            )}
+          </div>
+        </Link>
+      )}
     </div>
   );
 };
