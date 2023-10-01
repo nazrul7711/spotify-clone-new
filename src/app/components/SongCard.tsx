@@ -20,7 +20,7 @@ const SongCard = ({
   song,
 }: SongCardProps) => {
   const [onHover, setOnHover] = useState<boolean>(false);
-
+  console.log(`${process.env.NEXT_PUBLIC_URL}/${id}`);
   return (
     <div className={styles.wrapper}>
       <Link href={`${process.env.NEXT_PUBLIC_URL}/${id}`}>
