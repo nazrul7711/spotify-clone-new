@@ -126,7 +126,7 @@ const Page = () => {
               <p className={styles.error}>{errors.password.message}</p>
             )}
           </div>
-          <div className={styles.title}>What's your date of birth&quest;</div>
+          <div className={styles.title}>What's your date of birth ?</div>
           <div className={styles.dob}>
             <div>
               <p>Year</p>
@@ -188,7 +188,7 @@ const Page = () => {
               )}
             </div>
           </div>
-          <div className={styles.title}>What's your gender&quest;</div>
+          <div className={styles.title}>What's your gender?</div>
           <div className={styles.gender}>
             <label htmlFor="male">
               <input

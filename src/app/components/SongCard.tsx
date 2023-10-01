@@ -16,7 +16,7 @@ const SongCard = ({ id, songImage, title, description ,song}: SongCardProps) => 
   const [onHover, setOnHover] = useState<boolean>(false);
   return (
     <div className={styles.wrapper}>
-      <Link href={`http://localhost:3000/${id}`}>
+      <Link href={`${process.env.NEXTAUTH_URL}/${id}`}>
         <div
           className={styles.container}
           onMouseEnter={() => setOnHover(true)}
