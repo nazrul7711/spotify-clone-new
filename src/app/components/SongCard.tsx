@@ -10,13 +10,20 @@ export interface SongCardProps {
   title: string;
   description: string;
   id: string;
-  song:string
+  song: string;
 }
-const SongCard = ({ id, songImage, title, description ,song}: SongCardProps) => {
+const SongCard = ({
+  id,
+  songImage,
+  title,
+  description,
+  song,
+}: SongCardProps) => {
   const [onHover, setOnHover] = useState<boolean>(false);
+
   return (
     <div className={styles.wrapper}>
-      <Link href={`${process.env.NEXTAUTH_URL}/${id}`}>
+      <Link href={`${process.env.NEXT_PUBLIC_URL}/${id}`}>
         <div
           className={styles.container}
           onMouseEnter={() => setOnHover(true)}
