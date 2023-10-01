@@ -7,7 +7,7 @@ import { headers } from "next/headers";
 import Player from "@/app/components/Player";
 
 async function getSong(songId: string) {
-  let res = await fetch(`http://localhost:3000/api/getSong/${songId}`, {
+  let res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/getSong/${songId}`, {
     method: "GET",
     headers: headers(),
     cache: "no-store",
