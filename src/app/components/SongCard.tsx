@@ -23,6 +23,7 @@ const SongCard = ({
 
   console.log("ID:", id);
   console.log("link", `${process.env.NEXT_PUBLIC_URL}/${id}`);
+  console.log("only link", `${process.env.NEXT_PUBLIC_URL}}`);
 
   return (
     <div className={styles.wrapper}>
