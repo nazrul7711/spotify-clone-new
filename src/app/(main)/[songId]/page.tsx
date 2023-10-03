@@ -7,6 +7,7 @@ import { headers } from "next/headers";
 import Player from "@/app/components/Player";
 
 async function getSong(songId: string) {
+  console.log(process.env.NEXT_PUBLIC_URL);
   let res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/getSong/${songId}`, {
     method: "GET",
     headers: headers(),
@@ -21,6 +22,7 @@ async function getSong(songId: string) {
 const Song = async ({ params }: { params: { songId: string } }) => {
   const { songId } = params;
   const song = await getSong(songId);
+  console.log(song)
 
   return (
     <div className={styles.wrapper}>
