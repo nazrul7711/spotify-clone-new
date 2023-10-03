@@ -23,6 +23,8 @@ const Song = async ({ params }: { params: { songId: string } }) => {
   const { songId } = params;
   const song = await getSong(songId);
   console.log(song)
+  console.log("kill bill")
+
 
   return (
     <div className={styles.wrapper}>
