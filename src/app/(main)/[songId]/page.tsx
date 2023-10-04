@@ -6,9 +6,11 @@ import AddFavorite from "@/app/components/AddFavorite";
 import { headers } from "next/headers";
 import Player from "@/app/components/Player";
 
-async function getSong(songId: string) {
+//spotify-clone-new-steel.vercel.app/api/getSong/650ec738d819c3b6ab0a059e
+
+https: async function getSong(songId: string) {
   let res = await fetch(
-    `https://spotify-clone-new-steel.vercel.app/api/getSong/${songId}`,
+    `spotify-clone-new-steel.vercel.app/api/getSong/${songId}`,
     {
       method: "GET",
       headers: headers(),
