@@ -7,12 +7,14 @@ import { headers } from "next/headers";
 import Player from "@/app/components/Player";
 
 async function getSong(songId: string) {
-
-  let res = await fetch(`/api/getSong/${songId}`, {
-    method: "GET",
-    headers: headers(),
-    cache: "no-store",
-  });
+  let res = await fetch(
+    `https://spotify-clone-new-steel.vercel.app/api/getSong/${songId}`,
+    {
+      method: "GET",
+      headers: headers(),
+      cache: "no-store",
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed");
   }
