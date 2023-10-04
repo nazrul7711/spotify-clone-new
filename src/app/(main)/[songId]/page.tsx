@@ -7,8 +7,8 @@ import { headers } from "next/headers";
 import Player from "@/app/components/Player";
 
 async function getSong(songId: string) {
-  console.log(process.env.NEXT_PUBLIC_URL);
-  let res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/getSong/${songId}`, {
+
+  let res = await fetch(`/api/getSong/${songId}`, {
     method: "GET",
     headers: headers(),
     cache: "no-store",
@@ -22,9 +22,6 @@ async function getSong(songId: string) {
 const Song = async ({ params }: { params: { songId: string } }) => {
   const { songId } = params;
   const song = await getSong(songId);
-  console.log(song)
-  console.log("kill bill")
-
 
   return (
     <div className={styles.wrapper}>
@@ -40,7 +37,7 @@ const Song = async ({ params }: { params: { songId: string } }) => {
         </div>
       </div>
       <div className={styles.songIcons}>
-        <Player songId={songId}/>
+        <Player songId={songId} />
         <AddFavorite songId={songId} />
         <BiDotsHorizontalRounded size={30} />
       </div>
